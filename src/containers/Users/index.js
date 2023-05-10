@@ -22,12 +22,12 @@ const Users = () => {
   // ]
   const navigate = useNavigate()
   const [users, setUsers] = useState([])
-
+  const baseUrl = "https://register-user-api-liard.vercel.app"
 
 
   useEffect(() => {
     async function fetchUsers () {
-      const { data: newUsers } = await axios.get('http://localhost:3001/users')
+      const { data: newUsers } = await axios.get(`${baseUrl}/users`)
       setUsers(newUsers)
     }
     fetchUsers()
@@ -35,7 +35,7 @@ const Users = () => {
 
 
   async function deleteUser (userId) {
-    await axios.delete(`http://localhost:3001/users/${userId}`)
+    await axios.delete(`${baseUrl}/users/${userId}`)
     const newUsers = users.filter(user => user.id !== userId)
     setUsers(newUsers)
   }

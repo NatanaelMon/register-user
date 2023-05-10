@@ -26,9 +26,10 @@ const App = () => {
   const [users, setUsers] = useState([])
   const inputName = useRef()
   const inputAge = useRef()
+  const baseUrl = "https://register-user-api-liard.vercel.app"
 
   async function addNewUser () {
-    const {data: newUser} = await axios.post('http://localhost:3001/users', {
+    const {data: newUser} = await axios.post(`${baseUrl}/users`, {
       name: inputName.current.value,
       age: inputAge.current.value
     })
